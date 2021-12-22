@@ -8,13 +8,30 @@
 #include <stdio.h>
 int main()
 {
-    char ress[2048];
     int x, y;
-    scanf("%s", ress);
     scanf("%d %d", &x, &y);
+    int a[]={3072,2720,2560,2560,2304,2048,1920,1920,1440,1280,1280,1024,1024,800,800,800,640,640,640,480,480,480,320,320,320,240,176,160,160,160};
+    int b[]={1728,1536,1600,1440,1728,1536,1200,1080,900,800,720,768,640,600,500,450,480,400,360,360,300,270,240,200,180,180,144,120,100,90};
+    
+    int m=0,n=0;
+    int e,f,c,d;
+    for(int i=0; i<30; i++){
+        if(x>a[i]) e=x-a[i];
+        else e=a[i]-x;
 
-    // 学习一下 sscanf 可以方便处理 ress 字符串
+        if(y>b[i]) f=y-b[i];
+        else f=b[i]-y;
 
-    printf("选中的分辨率是%s\n", "???");
+        if(x>a[m]) c=x-a[m];
+        else c=a[m]-x;
+
+        if(y>b[m]) d=y-b[m];
+        else d=b[m]-y;
+
+        if(e<=c && f<=d)
+        m=i;
+    }
+
+    printf("The selected fractional frequency:%dx%d\n", a[m], b[m]);
     return 0;
 }
